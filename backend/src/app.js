@@ -4,6 +4,8 @@ import cors from "cors";
 import { version } from "node:os";
 dotenv.config();
 
+import parqueoRoutes from "./routes/parqueo.routes.js";
+
 const NAME=process.env.SERVER_NAME;
 const PORT=process.env.SERVER_PORT;
 const VERSION=process.env.SERVER_VERSION;
@@ -23,6 +25,8 @@ app.get("/",(req,res)=>{
         puerto: PORT
     });
 });
+
+app.use("/api/parqueo",parqueoRoutes)
 
 app.listen(4000,()=>{
     console.log('Servidor funcionando correctamente en http://localhost:4000');
